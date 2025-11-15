@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-wwwroot
+wwwroot/
 node_modules
 dist
 dist-ssr
@@ -21,6 +21,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.db-shm
+*.db-wal
 .env
 ## A streamlined .gitignore for modern .NET projects
 ## including temporary files, build results, and
@@ -71,7 +73,7 @@ CodeCoverage/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-
+*.db
 # NUnit
 *.VisualState.xml
 TestResult.xml
