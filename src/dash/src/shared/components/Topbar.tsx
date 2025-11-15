@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 
 function Topbar() {
   return (
-    <div className="sticky font-family-vt32 top-0 text-primary-foreground md:px-36 flex items-center justify-center">
+    <div className="sticky font-family-vt32  top-0 z-topbar backdrop-blur-2xl pb-2 rounded-b-lg text-primary-foreground md:px-36 flex items-center justify-center">
       <div className="bg-foreground p-4 rounded-b-lg w-full flex items-center justify-between">
         <h1 className="text-4xl font-bold ">ProjectRFID</h1>
         <div className="flex items-center gap-2">

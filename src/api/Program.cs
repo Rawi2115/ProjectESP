@@ -44,11 +44,7 @@ app.MapGet("/", () => "Hello World!");
 app.MapPost("/echo", (CardData cardData) => Console.WriteLine(cardData.Uid));
 app.MapHub<RfidHub>("/uidhub");
 
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<SqliteDbContext>();
-    await dbContext.Database.MigrateAsync();
-}
+await SeedDb.Seed(app.Services);
 app.Run();
 
 
