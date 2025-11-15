@@ -7,6 +7,7 @@ public class AttractionDto
     public string ArDescription { get; set; } = null!;
     public string Location { get; set; } = null!;
     public string ImageUrl { get; set; } = null!;
+    public int ProvinceId { get; set; }
     public static AttractionDto FromEntity(Attractions attraction)
     {
         return new AttractionDto
@@ -17,7 +18,8 @@ public class AttractionDto
             Description = attraction.Description,
             ArDescription = attraction.ArDescription,
             Location = attraction.Location,
-            ImageUrl = attraction.ImageUrl
+            ImageUrl = attraction.ImageUrl,
+            ProvinceId = attraction.ProvinceId
         };
     }
     public static List<AttractionDto> FromEntities(List<Attractions> attractions)

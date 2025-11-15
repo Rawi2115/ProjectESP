@@ -31,6 +31,8 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(opt =>
     opt.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 builder.Services.AddScoped<IProvinceService, ProvinceService>();
+builder.Services.AddScoped<IAttractionService, AttractionService>();
+builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddOpenApi();
 var app = builder.Build();
 app.UseCors();

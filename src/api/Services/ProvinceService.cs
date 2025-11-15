@@ -41,47 +41,8 @@ public class ProvinceService(SqliteDbContext sqliteDbContext):IProvinceService
         province.Population = request.Population;
         province.Area = request.Area;
 
-        // Update cities
-        foreach(var city in request.Cities)
-        {
-            var existingCity =  province.Cities.FirstOrDefault(c => c.Id == city.Id);
-            if (existingCity != null)
-            {
-                existingCity.Name = city.Name;
-                existingCity.ArName = city.ArName;
-            }
-            else
-            {
-                province.Cities.Add(new City
-                {
-                    Name = city.Name,
-                    ArName = city.ArName,
-                    ProvinceId = province.Id
-                });
-            }
-        }
-        foreach(var attraction in request.Attractions)
-        {
-            var existingAttraction = province.Attractions.FirstOrDefault(a => a.Id == attraction.Id);
-            if (existingAttraction != null)
-            {
-                existingAttraction.Name = attraction.Name;
-                existingAttraction.ArName = attraction.ArName;
-                existingAttraction.Description = attraction.Description;
-                existingAttraction.ImageUrl = attraction.ImageUrl;
-            }
-            else
-            {
-                province.Attractions.Add(new Attractions
-                {
-                    Name = attraction.Name,
-                    ArName = attraction.ArName,
-                    Description = attraction.Description,
-                    ImageUrl = attraction.ImageUrl,
-                    ProvinceId = province.Id
-                });
-            }
-        }
+        
+        
         await sqliteDbContext.SaveChangesAsync();
         return true;
     }
