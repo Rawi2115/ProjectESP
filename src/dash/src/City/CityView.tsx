@@ -1,4 +1,3 @@
-import React from "react";
 import useCity from "./useCity";
 import {
   Dialog,
@@ -26,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import {
   Card,
+  CardAction,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -36,14 +36,11 @@ function CityView() {
     cities: data,
     isError,
     form,
-    handleOpenEditModal,
-    handleOpenDeleteModal,
     handleCloseModals,
     handleOpenAddModal,
+    handleOpenEditModal,
+    handleOpenDeleteModal,
     onSubmit,
-    createCityMutation,
-    updateCityMutation,
-    setOpenDeleteModal,
     setOpenModal,
     openModal,
     selectedCity,
@@ -60,7 +57,10 @@ function CityView() {
             <DialogTitle>{selectedCity ? "Edit City" : "Add City"}</DialogTitle>
           </DialogHeader>
           <Form {...form}>
-            <form className="flex flex-wrap gap-2">
+            <form
+              className="flex flex-wrap gap-2"
+              onSubmit={form.handleSubmit(onSubmit)}
+            >
               <FormField
                 name="name"
                 control={form.control}
@@ -83,38 +83,40 @@ function CityView() {
                   </FormItem>
                 )}
               />
-              <FormField
-                name="provinceId"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Province ID</FormLabel>
-                    <Select
-                      name={field.name}
-                      value={String(field.value)}
-                      onValueChange={(val) => {
-                        field.onChange(Number(val));
-                      }}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select Province" />
-                      </SelectTrigger>
-                      <SelectContent position="item-aligned">
-                        {provinces?.map((province) => (
-                          <SelectItem
-                            key={province.id}
-                            value={String(province.id)}
-                          >
-                            {province.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="flex-1 flex items-end gap-2">
+              <div className="w-full">
+                <FormField
+                  name="provinceId"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Province ID</FormLabel>
+                      <Select
+                        name={field.name}
+                        value={String(field.value)}
+                        onValueChange={(val) => {
+                          field.onChange(Number(val));
+                        }}
+                      >
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select Province" />
+                        </SelectTrigger>
+                        <SelectContent position="item-aligned">
+                          {provinces?.map((province) => (
+                            <SelectItem
+                              key={province.id}
+                              value={String(province.id)}
+                            >
+                              {province.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1 grow w-full flex items-end gap-2">
                 <Button
                   type="button"
                   variant="destructive"
@@ -144,6 +146,20 @@ function CityView() {
                 {city.name} ({city.arName})
               </CardTitle>
               <CardDescription>Province ID: {city.provinceId}</CardDescription>
+              <CardAction className="flex gap-2 items-center">
+                <Button
+                  variant="destructive"
+                  onClick={() => handleOpenDeleteModal(city.id)}
+                >
+                  Delete{" "}
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => handleOpenEditModal(city.id)}
+                >
+                  Edit
+                </Button>
+              </CardAction>
             </CardHeader>
           </Card>
         ))}

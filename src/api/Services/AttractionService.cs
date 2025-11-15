@@ -23,6 +23,8 @@ public class AttractionService(SqliteDbContext sqliteDbContext):IAttractionServi
             Name = dto.Name,
             ArName = dto.ArName,
             Description = dto.Description,
+            ArDescription = dto.ArDescription,
+            Location = dto.Location,
             ImageUrl = dto.ImageUrl,
             ProvinceId = dto.ProvinceId
         };

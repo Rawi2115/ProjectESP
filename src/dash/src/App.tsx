@@ -3,6 +3,7 @@ import MainLayout from "./MainLayout";
 import Home from "./Home";
 import ProvinceView from "./Province/ProvinceView";
 import CityView from "./City/CityView";
+import AttractionView from "./Attraction/AttractionView";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/cities",
         element: <CityView />,
+      },
+      {
+        path: "/attractions",
+        element: <AttractionView />,
       },
     ],
   },
