@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 [ApiController]
-[Route("api/cards")]
+[Route("cards")]
 public class CardsController(IHubContext<RfidHub> hub,SqliteDbContext sqliteDbContext) : Controller
 {
 
@@ -22,7 +22,7 @@ public class CardsController(IHubContext<RfidHub> hub,SqliteDbContext sqliteDbCo
 
         }else if (existingCard.ProvinceId == null)
         {
-            await hub.Clients.Group("Client").SendAsync("UnAssignedCard", cardData.Uid, ct);
+            await hub.Clients.All.SendAsync("UnAssignedCard", cardData.Uid, ct);
         }
         else
         {

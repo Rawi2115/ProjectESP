@@ -12,7 +12,7 @@ public class RfidHub:Hub
     }
     public async Task UnAssignedCard(string uid)
     {
-        await Clients.Group("Client").SendAsync("UnAssignedCard",uid);
+        await Clients.All.SendAsync("UnAssignedCard",uid);
     }
     public override async  Task OnConnectedAsync()
     {

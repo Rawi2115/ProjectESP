@@ -4,6 +4,7 @@ import Home from "./Home";
 import ProvinceView from "./Province/ProvinceView";
 import CityView from "./City/CityView";
 import AttractionView from "./Attraction/AttractionView";
+import CardsView from "./Card/CardsView";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/attractions",
         element: <AttractionView />,
+      },
+      {
+        path: "/cards",
+        element: <CardsView />,
       },
     ],
   },

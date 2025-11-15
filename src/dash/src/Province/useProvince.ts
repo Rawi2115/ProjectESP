@@ -12,20 +12,8 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import useImageUpload from "@/shared/utils/useImageUpload";
-interface City {
-  id: number;
-  name: string;
-  arName: string;
-}
-interface Attraction {
-  id: number;
-  name: string;
-  arName: string;
-  description: string;
-  arDescription: string;
-  imageUrl: string;
-}
-interface Province {
+
+export interface Province {
   id: number;
   name: string;
   arName: string;
@@ -34,8 +22,6 @@ interface Province {
   arDescription: string;
   imageUrl: string;
   population: number;
-  cities: City[];
-  attractions: Attraction[];
 }
 export const getProvincesQuery = () => {
   return useQuery({
