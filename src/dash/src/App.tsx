@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "./MainLayout";
 import Home from "./Home";
 import ProvinceView from "./Province/ProvinceView";
+import CityView from "./City/CityView";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/provinces",
         element: <ProvinceView />,
+      },
+      {
+        path: "/cities",
+        element: <CityView />,
       },
     ],
   },

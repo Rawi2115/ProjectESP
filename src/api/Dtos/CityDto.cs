@@ -3,6 +3,7 @@ public class CityDto
     public int Id { get; set; }
     public string Name { get; set; } = null!;
     public string ArName { get; set; } = null!;
+    public int ProvinceId { get; set; }
 
     public static CityDto FromEntity(City city)
     {
@@ -10,7 +11,8 @@ public class CityDto
         {
             Id = city.Id,
             Name = city.Name,
-            ArName = city.ArName
+            ArName = city.ArName,
+            ProvinceId = city.ProvinceId
         };
     }
     public static List<CityDto> FromEntities(List<City> cities)

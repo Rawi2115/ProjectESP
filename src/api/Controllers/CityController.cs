@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("City")]
+[Route("city")]
 public class CityController(ICityService cityService) : Controller
 {
     [HttpGet]
